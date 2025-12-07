@@ -3,24 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Định nghĩa kiểu dữ liệu cho Skill
-interface Skill {
-    name: string;
-    icon: string; // Trong thực tế có thể dùng Component Icon hoặc đường dẫn ảnh
-    category: 'Frontend' | 'Backend' | 'Tools';
-    color: string;
-}
-
-const skillsData: Skill[] = [
-    { name: 'React', icon: '⚛️', category: 'Frontend', color: 'bg-blue-100 text-blue-600' },
-    { name: 'Next.js', icon: '▲', category: 'Frontend', color: 'bg-black text-white dark:bg-white dark:text-black' },
-    { name: 'TypeScript', icon: 'TS', category: 'Frontend', color: 'bg-blue-100 text-blue-700' },
-    { name: 'Tailwind CSS', icon: '🌊', category: 'Frontend', color: 'bg-cyan-100 text-cyan-600' },
-    { name: 'Node.js', icon: '🟢', category: 'Backend', color: 'bg-green-100 text-green-600' },
-    { name: 'Git', icon: '📦', category: 'Tools', color: 'bg-orange-100 text-orange-600' },
-    { name: 'Figma', icon: '🎨', category: 'Tools', color: 'bg-purple-100 text-purple-600' },
-    { name: 'VS Code', icon: '💻', category: 'Tools', color: 'bg-blue-50 text-blue-500' },
-];
+import { SKILLS_DATA } from './data/skills';
 
 const Skills = () => {
     // Animation variants
@@ -51,32 +34,49 @@ const Skills = () => {
                     </p>
                 </div>
 
-                <motion.div
-                    variants={container}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    className="grid grid-cols-2 md:grid-cols-4 gap-6"
-                >
-                    {skillsData.map((skill, index) => (
-                        <motion.div
-                            key={index}
-                            variants={item}
-                            whileHover={{ y: -5, scale: 1.02 }}
-                            className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700 flex flex-col items-center justify-center gap-4 group"
-                        >
-                            <div className={`w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-2 ${skill.color} font-bold`}>
-                                {skill.icon}
-                            </div>
-                            <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">
-                                {skill.name}
+                <div className="space-y-12">
+                    {SKILLS_DATA.map((category, index) => (
+                        <div key={index}>
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 border-l-4 border-blue-500 pl-4">
+                                {category.title}
                             </h3>
-                            <span className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-500 dark:text-gray-400">
-                                {skill.category}
-                            </span>
-                        </motion.div>
+                            <motion.div
+                                variants={container}
+                                initial="hidden"
+                                whileInView="show"
+                                viewport={{ once: true }}
+                                className="grid grid-cols-2 md:grid-cols-4 gap-6"
+                            >
+                                {category.items.map((skill, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        variants={item}
+                                        whileHover={{ y: -5, scale: 1.02 }}
+                                        className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700 flex flex-col items-center justify-center gap-4 group"
+                                    >
+                                        {skill.icon && (
+                                            <div className="w-12 h-12 relative">
+                                                {/* Nếu icon là ảnh thì dung Image, nếu là string emoji thì render text. 
+                                                     Ở đây data đang để emoji hoặc tên file, ta tạm render text/emoji nếu không phải path ảnh */}
+                                                <div className="text-4xl flex items-center justify-center h-full">
+                                                    {skill.icon}
+                                                </div>
+                                            </div>
+                                        )}
+                                        <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">
+                                            {skill.name}
+                                        </h3>
+                                        {skill.level && (
+                                            <span className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-500 dark:text-gray-400">
+                                                {skill.level}
+                                            </span>
+                                        )}
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );

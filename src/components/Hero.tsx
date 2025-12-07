@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'framer-motion';
 import { Download, ArrowRightCircle } from 'lucide-react';
+import { PERSONAL_INFO } from './data/info';
 
 const Hero = () => {
   // Cấu hình animation cho container cha (xuất hiện từ từ)
@@ -40,14 +41,14 @@ const Hero = () => {
 
             {/* Tên và Hiệu ứng gõ chữ */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white leading-tight">
-              Nguyễn Văn A
+              {PERSONAL_INFO.fullName}
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
                 I'm a{' '}
                 <TypeAnimation
                   sequence={[
-                    'Frontend Developer.', // Chữ sẽ gõ ra
-                    2000, // Dừng lại 2 giây
+                    PERSONAL_INFO.role, // Sử dụng role từ data
+                    2000,
                     'React Enthusiast.',
                     2000,
                     'UI/UX Lover.',
@@ -62,8 +63,7 @@ const Hero = () => {
 
             {/* Mô tả ngắn */}
             <p className="text-lg text-gray-600 dark:text-gray-300 md:w-4/5 leading-relaxed">
-              Mình là một lập trình viên đam mê xây dựng các ứng dụng web hiện đại,
-              tối ưu trải nghiệm người dùng với công nghệ mới nhất như Next.js và React.
+              {PERSONAL_INFO.aboutMe}
             </p>
 
             {/* Nút kêu gọi hành động (CTA Buttons) */}
@@ -78,7 +78,7 @@ const Hero = () => {
               </motion.a>
 
               <motion.a
-                href="/path-to-your-cv.pdf" // Đổi đường dẫn file CV của bạn
+                href={PERSONAL_INFO.cvUrl}
                 target="_blank"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -93,18 +93,13 @@ const Hero = () => {
           <motion.div className="col-span-1 lg:col-span-5" variants={itemVariants}>
             {/* Placeholder cho ảnh - Hãy thay ảnh thật của bạn vào đây */}
             <div className="relative w-full aspect-square lg:aspect-[4/5] rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800 shadow-2xl border-4 border-white dark:border-gray-700 rotate-3 hover:rotate-0 transition-all duration-500">
-              {/* Khi có ảnh thật, hãy bỏ comment dòng dưới và xóa thẻ div placeholder ở trên:
-                 <Image 
-                   src="/images/avatar.jpg" // Lưu ảnh vào thư mục public/images/
-                   alt="Nguyễn Văn A Portrait" 
-                   fill
-                   className="object-cover"
-                   priority // Ưu tiên tải ảnh này trước
-                 /> 
-                 */}
-              <div className="absolute inset-0 flex items-center justify-center text-gray-400 font-bold text-xl">
-                Ảnh của bạn (Hãy thay Image)
-              </div>
+              <Image
+                src={PERSONAL_INFO.avatarUrl}
+                alt={`${PERSONAL_INFO.fullName} Portrait`}
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </motion.div>
         </motion.div>

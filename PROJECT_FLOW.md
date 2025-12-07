@@ -70,13 +70,13 @@ src/
     - Link trỏ tới các ID (ví dụ: `#about`, `#projects`).
 
 ### Phase 3: Content Sections
-- [ ] Tạo `About.tsx`: Layout chia 2 cột (Ảnh - Chữ).
-- [ ] Tạo `Skills.tsx`: Tìm logo SVG của các công nghệ.
-- [ ] Tạo `Projects.tsx`: Tạo mảng data chứa thông tin dự án giả lập (`const projects = [...]`) rồi dùng map để render ra giao diện.
+- [x] Tạo `About.tsx`: Layout chia 2 cột (Ảnh - Chữ).
+- [x] Tạo `Skills.tsx`: Tìm logo SVG của các công nghệ.
+- [x] Tạo `Projects.tsx`: Tạo mảng data chứa thông tin dự án giả lập (`const projects = [...]`) rồi dùng map để render ra giao diện.
 
 ### Phase 4: Contact & Polish
 - [x] Tạo `Contact.tsx`: Thiết kế form đẹp.
-- [ ] Responsive Check: Kiểm tra hiển thị trên điện thoại (Mobile first).
+- [x] Responsive Check: Kiểm tra hiển thị trên điện thoại (Mobile first).
 - [ ] Dark Mode: Cấu hình nút chuyển Sáng/Tối.
 
 ---

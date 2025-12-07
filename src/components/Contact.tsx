@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { PERSONAL_INFO } from './data/info';
 
 const Contact = () => {
     return (
@@ -37,7 +38,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-medium text-gray-900 dark:text-white">Email</h4>
-                                    <p className="text-gray-600 dark:text-gray-400">your.email@example.com</p>
+                                    <p className="text-gray-600 dark:text-gray-400">{PERSONAL_INFO.email}</p>
                                 </div>
                             </div>
 
@@ -47,7 +48,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-medium text-gray-900 dark:text-white">Điện thoại</h4>
-                                    <p className="text-gray-600 dark:text-gray-400">+84 123 456 789</p>
+                                    <p className="text-gray-600 dark:text-gray-400">{PERSONAL_INFO.phone}</p>
                                 </div>
                             </div>
 
@@ -57,7 +58,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-medium text-gray-900 dark:text-white">Địa chỉ</h4>
-                                    <p className="text-gray-600 dark:text-gray-400">Ho Chi Minh City, Vietnam</p>
+                                    <p className="text-gray-600 dark:text-gray-400">{PERSONAL_INFO.address}</p>
                                 </div>
                             </div>
                         </div>

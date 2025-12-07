@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { PERSONAL_INFO } from './data/info';
 
 const About = () => {
     return (
@@ -39,15 +40,7 @@ const About = () => {
 
                         <div className="space-y-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
-                                Xin chào! Mình là một lập trình viên với niềm đam mê mãnh liệt trong việc tạo ra những sản phẩm web đẹp mắt và hiệu quả.
-                                Mình bắt đầu hành trình lập trình từ năm [Năm], và kể từ đó, mình đã không ngừng học hỏi và phát triển.
-                            </p>
-                            <p>
-                                Mình chuyên về Frontend Development với React và Next.js. Mình tin rằng một giao diện tốt không chỉ đẹp mà còn phải
-                                mang lại trải nghiệm mượt mà cho người dùng.
-                            </p>
-                            <p>
-                                Ngoài code, mình cũng thích [Sở thích khác của bạn, ví dụ: đọc sách, chơi game, chụp ảnh].
+                                {PERSONAL_INFO.aboutMe}
                             </p>
                         </div>
 
@@ -60,13 +53,17 @@ const About = () => {
                                     <p className="text-gray-600 dark:text-gray-400 text-sm">Đang học tập và xây dựng các dự án cá nhân với Next.js.</p>
                                 </div>
                             </div>
-                            <div className="flex items-start gap-4 p-4 rounded-xl bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors">
-                                <div className="h-full mt-1.5 w-2 bg-purple-500 rounded-full"></div>
-                                <div>
-                                    <h4 className="font-bold text-gray-900 dark:text-white">Học vấn</h4>
-                                    <p className="text-gray-600 dark:text-gray-400 text-sm">Sinh viên năm [Năm] chuyên ngành CNTT tại [Trường].</p>
+
+                            {PERSONAL_INFO.education.map((edu, index) => (
+                                <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors">
+                                    <div className="h-full mt-1.5 w-2 bg-purple-500 rounded-full"></div>
+                                    <div>
+                                        <h4 className="font-bold text-gray-900 dark:text-white">Học vấn - {edu.school}</h4>
+                                        <p className="text-gray-600 dark:text-gray-400 text-sm">{edu.major} ({edu.period})</p>
+                                        <p className="text-gray-500 dark:text-gray-500 text-xs mt-1">GPA: {edu.gpa}</p>
+                                    </div>
                                 </div>
-                            </div>
+                            ))}
                         </div>
 
                         <div className="mt-8">
