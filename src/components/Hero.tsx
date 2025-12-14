@@ -1,4 +1,4 @@
-'use client'; // Bắt buộc dòng này vì chúng ta dùng animation và tương tác client
+'use client';
 
 import React from 'react';
 import Image from 'next/image';
@@ -8,23 +8,21 @@ import { Download, ArrowRightCircle } from 'lucide-react';
 import { PERSONAL_INFO } from './data/info';
 
 const Hero = () => {
-  // Cấu hình animation cho container cha (xuất hiện từ từ)
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.3, delayChildren: 0.2 }, // Các con sẽ xuất hiện cách nhau 0.3s
+      transition: { staggerChildren: 0.3, delayChildren: 0.2 },
     },
   };
 
-  // Cấu hình animation cho các phần tử con (trượt từ dưới lên)
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { type: 'spring' as const, stiffness: 100 } },
   };
 
   return (
-    <section className="py-20 lg:py-32 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+    <section className="py-20 lg:py-32 overflow-hidden bg-[var(--background)]">
       <div className="container mx-auto px-4">
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
@@ -34,47 +32,45 @@ const Hero = () => {
         >
           {/* --- Cột bên trái: Nội dung chữ --- */}
           <motion.div className="col-span-1 lg:col-span-7 flex flex-col gap-6" variants={itemVariants}>
-            {/* Lời chào */}
-            <h2 className="text-xl md:text-2xl font-medium text-blue-600 dark:text-blue-400">
-              👋 Xin chào, mình là
+            <h2 className="text-xl md:text-2xl font-bold text-[var(--secondary)] glitch-effect">
+              👋 HELLO WORLD, I AM
             </h2>
 
-            {/* Tên và Hiệu ứng gõ chữ */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white leading-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight pixel-text-shadow">
               {PERSONAL_INFO.fullName}
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+              <span className="text-[var(--primary)]">
                 I'm a{' '}
                 <TypeAnimation
                   sequence={[
-                    PERSONAL_INFO.role, // Sử dụng role từ data
+                    PERSONAL_INFO.role,
                     2000,
-                    'React Enthusiast.',
+                    'PIXEL ARTIST.',
                     2000,
-                    'UI/UX Lover.',
+                    'REACT DEV.',
                     2000,
                   ]}
                   wrapper="span"
                   speed={50}
-                  repeat={Infinity} // Lặp vô tận
+                  repeat={Infinity}
+                  cursor={true}
+                  style={{ display: 'inline-block', textShadow: '4px 4px 0px black' }}
                 />
               </span>
             </h1>
 
-            {/* Mô tả ngắn */}
-            <p className="text-lg text-gray-600 dark:text-gray-300 md:w-4/5 leading-relaxed">
+            <p className="text-lg text-gray-300 md:w-4/5 leading-relaxed font-bold border-l-4 border-[var(--accent)] pl-4">
               {PERSONAL_INFO.aboutMe}
             </p>
 
-            {/* Nút kêu gọi hành động (CTA Buttons) */}
             <div className="flex flex-wrap gap-4 mt-4">
               <motion.a
                 href="/contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-8 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/30"
+                className="pixel-btn text-white px-8 py-3 flex items-center gap-2 font-bold no-underline"
               >
-                Liên hệ ngay <ArrowRightCircle size={20} />
+                START GAME <ArrowRightCircle size={20} />
               </motion.a>
 
               <motion.a
@@ -82,22 +78,23 @@ const Hero = () => {
                 target="_blank"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-8 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-2 border-gray-200 dark:border-gray-700 rounded-full font-medium hover:border-blue-600 dark:hover:border-blue-400 transition-colors"
+                className="bg-white text-black border-4 border-black px-8 py-3 flex items-center gap-2 font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all"
               >
-                Tải CV <Download size={20} />
+                DOWNLOAD CV <Download size={20} />
               </motion.a>
             </div>
           </motion.div>
 
           {/* --- Cột bên phải: Ảnh đại diện --- */}
           <motion.div className="col-span-1 lg:col-span-5" variants={itemVariants}>
-            {/* Placeholder cho ảnh - Hãy thay ảnh thật của bạn vào đây */}
-            <div className="relative w-full aspect-square lg:aspect-[4/5] rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800 shadow-2xl border-4 border-white dark:border-gray-700 rotate-3 hover:rotate-0 transition-all duration-500">
+            <div className="relative w-full aspect-square lg:aspect-[4/5] bg-[var(--secondary)] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+              {/* Scanline effect overlay */}
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 bg-[length:100%_2px,3px_100%] pointer-events-none"></div>
               <Image
                 src={PERSONAL_INFO.avatarUrl}
                 alt={`${PERSONAL_INFO.fullName} Portrait`}
                 fill
-                className="object-cover"
+                className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
                 priority
               />
             </div>

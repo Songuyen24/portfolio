@@ -23,21 +23,21 @@ const Skills = () => {
     };
 
     return (
-        <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-900">
+        <section id="skills" className="py-20 bg-[var(--background)]">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    <h2 className="text-3xl md:text-4xl font-bold text-[var(--secondary)] mb-4 uppercase tracking-widest pixel-text-shadow">
                         Kỹ Năng & Công Nghệ
                     </h2>
-                    <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-                        Những công cụ và công nghệ mình sử dụng thường xuyên để xây dựng sản phẩm.
+                    <p className="text-gray-300 text-lg max-w-2xl mx-auto font-bold">
+                        Công cụ và vũ khí chiến đấu.
                     </p>
                 </div>
 
                 <div className="space-y-12">
                     {SKILLS_DATA.map((category, index) => (
                         <div key={index}>
-                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 border-l-4 border-blue-500 pl-4">
+                            <h3 className="text-xl font-bold text-white mb-6 border-l-4 border-[var(--primary)] pl-4 uppercase tracking-wider">
                                 {category.title}
                             </h3>
                             <motion.div
@@ -52,23 +52,21 @@ const Skills = () => {
                                         key={idx}
                                         variants={item}
                                         whileHover={{ y: -5, scale: 1.02 }}
-                                        className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700 flex flex-col items-center justify-center gap-4 group"
+                                        className="bg-gray-800 p-6 shadow-[4px_4px_0px_0px_#000] border-4 border-black flex flex-col items-center justify-center gap-4 group hover:bg-[var(--primary)] transition-none"
                                     >
                                         {skill.icon && (
                                             <div className="w-12 h-12 relative">
-                                                {/* Nếu icon là ảnh thì dung Image, nếu là string emoji thì render text. 
-                                                     Ở đây data đang để emoji hoặc tên file, ta tạm render text/emoji nếu không phải path ảnh */}
-                                                <div className="text-4xl flex items-center justify-center h-full">
+                                                <div className="text-4xl flex items-center justify-center h-full grayscale group-hover:grayscale-0 contrast-150">
                                                     {skill.icon}
                                                 </div>
                                             </div>
                                         )}
-                                        <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">
+                                        <h3 className="font-bold text-white uppercase group-hover:text-white transition-none">
                                             {skill.name}
                                         </h3>
                                         {skill.level && (
-                                            <span className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-500 dark:text-gray-400">
-                                                {skill.level}
+                                            <span className="text-xs px-3 py-1 bg-black text-white font-bold border-2 border-white">
+                                                {skill.level.toUpperCase()}
                                             </span>
                                         )}
                                     </motion.div>

@@ -7,103 +7,103 @@ import { PERSONAL_INFO } from './data/info';
 
 const Contact = () => {
     return (
-        <section id="contact" className="py-20 lg:py-32 bg-white dark:bg-gray-950">
+        <section id="contact" className="py-20 lg:py-32 bg-[var(--background)]">
             <div className="container mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
-                    className="max-w-4xl mx-auto"
+                    className="max-w-4xl mx-auto pixel-box p-8 bg-white text-black"
                 >
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4 uppercase tracking-widest pixel-text-shadow text-[var(--primary)]">
                             Liên Hệ
                         </h2>
-                        <p className="text-gray-600 dark:text-gray-400 text-lg">
-                            Đừng ngần ngại liên lạc với mình để trao đổi công việc hoặc chỉ đơn giản là say hi! 👋
+                        <p className="text-gray-600 text-lg font-bold">
+                            Đừng ngần ngại liên lạc với mình!
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                         {/* Thông tin liên hệ */}
                         <div className="space-y-8">
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
-                                Thông tin cá nhân
+                            <h3 className="text-xl font-bold mb-6 uppercase border-b-4 border-black inline-block pb-2">
+                                Thông tin
                             </h3>
 
                             <div className="flex items-start gap-4">
-                                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
-                                    <Mail size={24} />
+                                <div className="p-3 bg-[var(--secondary)] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                                    <Mail size={24} className="text-black" />
                                 </div>
                                 <div>
-                                    <h4 className="font-medium text-gray-900 dark:text-white">Email</h4>
-                                    <p className="text-gray-600 dark:text-gray-400">{PERSONAL_INFO.email}</p>
+                                    <h4 className="font-bold">Email</h4>
+                                    <p className="text-gray-600 font-bold text-sm">{PERSONAL_INFO.email}</p>
                                 </div>
                             </div>
 
                             <div className="flex items-start gap-4">
-                                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
-                                    <Phone size={24} />
+                                <div className="p-3 bg-[var(--secondary)] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                                    <Phone size={24} className="text-black" />
                                 </div>
                                 <div>
-                                    <h4 className="font-medium text-gray-900 dark:text-white">Điện thoại</h4>
-                                    <p className="text-gray-600 dark:text-gray-400">{PERSONAL_INFO.phone}</p>
+                                    <h4 className="font-bold">Điện thoại</h4>
+                                    <p className="text-gray-600 font-bold text-sm">{PERSONAL_INFO.phone}</p>
                                 </div>
                             </div>
 
                             <div className="flex items-start gap-4">
-                                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
-                                    <MapPin size={24} />
+                                <div className="p-3 bg-[var(--secondary)] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                                    <MapPin size={24} className="text-black" />
                                 </div>
                                 <div>
-                                    <h4 className="font-medium text-gray-900 dark:text-white">Địa chỉ</h4>
-                                    <p className="text-gray-600 dark:text-gray-400">{PERSONAL_INFO.address}</p>
+                                    <h4 className="font-bold">Địa chỉ</h4>
+                                    <p className="text-gray-600 font-bold text-sm">{PERSONAL_INFO.address}</p>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Form liên hệ (Demo UI only) */}
+                        {/* Form liên hệ */}
                         <form className="space-y-6">
                             <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <label htmlFor="name" className="block text-sm font-bold text-black mb-2 uppercase">
                                     Họ và tên
                                 </label>
                                 <input
                                     type="text"
                                     id="name"
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all"
-                                    placeholder="Nhập tên của bạn"
+                                    className="w-full px-4 py-3 border-4 border-black bg-gray-100 text-black focus:outline-none focus:bg-white focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all font-bold"
+                                    placeholder="YOUR NAME"
                                 />
                             </div>
 
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <label htmlFor="email" className="block text-sm font-bold text-black mb-2 uppercase">
                                     Email
                                 </label>
                                 <input
                                     type="email"
                                     id="email"
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all"
-                                    placeholder="name@example.com"
+                                    className="w-full px-4 py-3 border-4 border-black bg-gray-100 text-black focus:outline-none focus:bg-white focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all font-bold"
+                                    placeholder="EMAIL@EXAMPLE.COM"
                                 />
                             </div>
 
                             <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <label htmlFor="message" className="block text-sm font-bold text-black mb-2 uppercase">
                                     Tin nhắn
                                 </label>
                                 <textarea
                                     id="message"
                                     rows={4}
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all resize-none"
-                                    placeholder="Nội dung tin nhắn..."
+                                    className="w-full px-4 py-3 border-4 border-black bg-gray-100 text-black focus:outline-none focus:bg-white focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all resize-none font-bold"
+                                    placeholder="INSERT COIN TO CONTINUE..."
                                 />
                             </div>
 
                             <button
                                 type="button"
-                                className="w-full py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg flex items-center justify-center gap-2 transition-colors"
+                                className="w-full py-3 px-6 pixel-btn font-bold flex items-center justify-center gap-2"
                             >
                                 Gửi tin nhắn <Send size={20} />
                             </button>
